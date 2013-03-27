@@ -20,20 +20,7 @@
  */
 namespace LSS;
 
-interface FormInterface {
-
-	public function setOptions($arr);
-	public function addOption($key,$value);
-	public function setName($name);
-	public function setValue($value);
-	public function addCssClass($class);
-	public function addExtra($extra);
-	public function render();
-	public function __toString();
-	
-}
-
-abstract class Form implements FormInterface {
+abstract class Form implements \LSS\FormInterface {
 
 	protected $options = array();
 	protected $name = null;

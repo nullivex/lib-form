@@ -18,10 +18,11 @@
  *	GNU Lesser General Public License along with OpenLSS.
  *	If not, see <http://www.gnu.org/licenses/>.
  */
-namespace LSS;
-ld('form');
+namespace LSS\Form;
 
-class FormDrop extends Form implements FormInterface {
+use \Exception;
+
+class Drop extends \LSS\Form implements \LSS\FormInterface {
 
 	protected $allow_null = false;
 	
@@ -46,7 +47,7 @@ class FormDrop extends Form implements FormInterface {
 	//Global Consructors
 	//-------------------------------
 	public static function _dateMonths($value=null,$name='month'){
-		$drop = FormDrop::_get()->setOptions(array(
+		$drop = self::_get()->setOptions(array(
 			0		=>	'-- Month --',
 			1		=>	'January',
 			2		=>	'February',
@@ -69,7 +70,7 @@ class FormDrop extends Form implements FormInterface {
 	public static function _dateDays($value=null,$name='month'){
 		$days = array(0=>'-- Day --');
 		for($i=1;$i<=31;$i++) $days[$i] = $i;
-		$drop = FormDrop::_get()->setOptions($days);
+		$drop = self::_get()->setOptions($days);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
@@ -80,31 +81,31 @@ class FormDrop extends Form implements FormInterface {
 		if(!$max) $max = date('Y');
 		$years = array(0=>'-- Year --');
 		for($i=$max;$i>=$min;$i--) $years[$i] = $i;
-		$drop = FormDrop::_get()->setOptions($years);
+		$drop = self::_get()->setOptions($years);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
 	}
 	
 	public static function _localeStates($value=null,$name='state'){
-		include(ROOT.'/locale/states.php');
-		$drop = FormDrop::_get()->setOptions($states);
+		include(dirname(dirname(__DIR__)).'/locale/states.php');
+		$drop = self::_get()->setOptions($states);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
 	}
 	
 	public static function _localeCountries($value=null,$name='country'){
-		include(ROOT.'/locale/countries.php');
-		$drop = FormDrop::_get()->setOptions($countries);
+		include(dirname(dirname(__DIR__)).'/locale/countries.php');
+		$drop = self::_get()->setOptions($countries);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
 	}
 	
 	public static function _localeTimezones($value=null,$name='timezone'){
-		include(ROOT.'/locale/timezones.php');
-		$drop = FormDrop::_get()->setOptions($timezones);
+		include(dirname(dirname(__DIR__)).'/locale/timezones.php');
+		$drop = self::_get()->setOptions($timezones);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
@@ -116,7 +117,7 @@ class FormDrop extends Form implements FormInterface {
 			,'right'		=>	'Right'
 		);
 		if($center) $o['center'] = 'Center';
-		$drop = FormDrop::_get()->setOptions($o);
+		$drop = self::_get()->setOptions($o);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
@@ -124,11 +125,11 @@ class FormDrop extends Form implements FormInterface {
 	
 	public static function _localeCurrencyISO($value=null,$name='currency_iso_code'){
 		//get and format
-		include(ROOT.'/locale/currency_iso_code.php');
+		include(dirname(dirname(__DIR__)).'/locale/currency_iso_code.php');
 		foreach($a as $code => $val) $c[$code] = implode(' #',$val);
 		unset($a);
 		//setup drop
-		$drop = FormDrop::_get()->setOptions($c);
+		$drop = self::_get()->setOptions($c);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;

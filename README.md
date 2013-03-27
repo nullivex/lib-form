@@ -13,12 +13,12 @@ Checkbox builder for HTML pages can be used with various templating
 Usage
 ----
 ```php
-ld('form_checkbox');
+use \LSS\Form\Checkbox;
 
 $arr = array(1=>'Yes',2=>'Yes, Please',3=>'Alright!');
 
 //pring checkbox form
-echo FormCheckbox::_get()->setOptions($arr)->setName('test')->setValue(1);
+echo Checkbox::_get()->setOptions($arr)->setName('test')->setValue(1);
 ```
 
 toString
@@ -69,12 +69,12 @@ Dropdown select builder for HTML pages can be used with various templating
 Usage
 ----
 ```php
-ld('form_drop');
+use \LSS\Form\Drop;
 
 $arr = array(1=>'Yes',2=>'Yes, Please',3=>'Alright!');
 
 //pring radio form
-echo FormDrop::_get()->setOptions($arr)->setName('test')->setValue(1);
+echo Drop::_get()->setOptions($arr)->setName('test')->setValue(1);
 ```
 
 toString
@@ -119,12 +119,12 @@ Radio button builder for HTML pages can be used with various templating
 Usage
 ----
 ```php
-ld('form_radio');
+use \LSS\Form\Radio;
 
 $arr = array(1=>'Yes',2=>'Yes, Please',3=>'Alright!');
 
 //pring radio form
-echo FormRadio::_get()->setOptions($arr)->setName('test')->setValue(1);
+echo Radio::_get()->setOptions($arr)->setName('test')->setValue(1);
 ```
 
 toString

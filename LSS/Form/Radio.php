@@ -18,10 +18,11 @@
  *	GNU Lesser General Public License along with OpenLSS.
  *	If not, see <http://www.gnu.org/licenses/>.
  */
-namespace LSS;
-ld('form');
+namespace LSS\Form;
 
-class FormRadio extends Form implements FormInterface {
+use \Exception;
+
+class Radio extends \LSS\Form implements \LSS\FormInterface {
 
 	public function render(){
 		if(!$this->name) throw new Exception('radio: name missing');
@@ -38,7 +39,7 @@ class FormRadio extends Form implements FormInterface {
 	//Global Consructors
 	//-------------------------------
 	public static function _stdYesNo($value=null,$name='yesno'){
-		return FormRadio::_get()->setOptions(array('1'=>'Yes','0'=>'No'))->setName($name)->setValue($value);
+		return self::_get()->setOptions(array('1'=>'Yes','0'=>'No'))->setName($name)->setValue($value);
 	}
 	
 }

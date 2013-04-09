@@ -28,15 +28,15 @@ abstract class Form implements \LSS\FormInterface {
 	protected $classes = null;
 	protected $extra = null;
 	protected $allow_null = false;
-	
+
 	public static function _get(){
 		return new static();
 	}
-	
+
 	public function __construct(){
 		return $this;
 	}
-	
+
 	//Array structure
 	//	'value'		=>	'description'
 	public function setOptions($arr){
@@ -44,39 +44,39 @@ abstract class Form implements \LSS\FormInterface {
 		$this->options = $arr;
 		return $this;
 	}
-	
+
 	public function addOption($key,$value){
 		$this->options[$key] = $value;
 		return $this;
 	}
-	
+
 	public function setName($name){
 		$this->name = $name;
 		return $this;
 	}
-	
+
 	public function setValue($value){
 		$this->value = $value;
 		return $this;
 	}
-	
+
 	public function addCssClass($class){
 		$this->classes .= ' '.$class;
 		return $this;
 	}
-	
+
 	public function addExtra($extra){
 		$this->extra .= ' '.$extra;
 		return $this;
 	}
-	
+
 	public function render(){
 		//must be extended
 		throw new Exception('render must be extended');
 	}
-	
+
 	public function __toString(){
 		return $this->render();
 	}
-	
+
 }

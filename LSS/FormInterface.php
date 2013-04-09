@@ -20,7 +20,6 @@
  */
 namespace LSS;
 
-
 interface FormInterface {
 
 	public function setOptions($arr);
@@ -31,5 +30,5 @@ interface FormInterface {
 	public function addExtra($extra);
 	public function render();
 	public function __toString();
-	
+
 }

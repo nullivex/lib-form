@@ -30,16 +30,16 @@ class Checkbox extends \LSS\Form implements \LSS\FormInterface {
 		$this->value = $value;
 		return $this;
 	}
-	
+
 	public function addValue($value){
 		$this->value[] = $value;
 		return $this;
 	}
-	
+
 	public function breakAfterEach(){
 		$this->break_after_each = true;
 	}
-	
+
 	public function render(){
 		if(!$this->name) throw new Exception('form drop: name missing');
 		if(!is_array($this->options)) throw new Exception('form drop: options missing');
@@ -51,5 +51,5 @@ class Checkbox extends \LSS\Form implements \LSS\FormInterface {
 		}
 		return $html;
 	}
-	
+
 }

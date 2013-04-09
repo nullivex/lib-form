@@ -34,12 +34,12 @@ class Radio extends \LSS\Form implements \LSS\FormInterface {
 		}
 		return $html;
 	}
-	
+
 	//-------------------------------
 	//Global Consructors
 	//-------------------------------
 	public static function _stdYesNo($value=null,$name='yesno'){
 		return self::_get()->setOptions(array('1'=>'Yes','0'=>'No'))->setName($name)->setValue($value);
 	}
-	
+
 }

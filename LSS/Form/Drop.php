@@ -25,12 +25,12 @@ use \Exception;
 class Drop extends \LSS\Form implements \LSS\FormInterface {
 
 	protected $allow_null = false;
-	
+
 	public function allowNull(){
 		$this->allow_null = true;
 		return $this;
 	}
-	
+
 	public function render(){
 		if(!$this->name) throw new Exception('drop: name missing');
 		$html = '<select name="'.$this->name.'" class="'.$this->classes.'" '.$this->extra.'>'."\n";
@@ -42,7 +42,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$html .= '</select>'."\n";
 		return $html;
 	}
-	
+
 	//-------------------------------
 	//Global Consructors
 	//-------------------------------
@@ -66,7 +66,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _dateDays($value=null,$name='month'){
 		$days = array(0=>'-- Day --');
 		for($i=1;$i<=31;$i++) $days[$i] = $i;
@@ -75,7 +75,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _dateYears($value=null,$name='years',$min=null,$max=null){
 		if(!$min) $min = (date('Y') - 120);
 		if(!$max) $max = date('Y');
@@ -86,7 +86,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _localeStates($value=null,$name='state'){
 		include(dirname(dirname(__DIR__)).'/locale/states.php');
 		$drop = self::_get()->setOptions($states);
@@ -94,7 +94,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _localeCountries($value=null,$name='country'){
 		include(dirname(dirname(__DIR__)).'/locale/countries.php');
 		$drop = self::_get()->setOptions($countries);
@@ -102,7 +102,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _localeTimezones($value=null,$name='timezone'){
 		include(dirname(dirname(__DIR__)).'/locale/timezones.php');
 		$drop = self::_get()->setOptions($timezones);
@@ -110,7 +110,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _justify($value=null,$name='justify',$center=true){
 		$o = array(
 			 'left'		=>	'Left'
@@ -122,7 +122,7 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 	public static function _localeCurrencyISO($value=null,$name='currency_iso_code'){
 		//get and format
 		include(dirname(dirname(__DIR__)).'/locale/currency_iso_code.php');
@@ -134,5 +134,5 @@ class Drop extends \LSS\Form implements \LSS\FormInterface {
 		$drop->setValue($value);
 		return $drop;
 	}
-	
+
 }
